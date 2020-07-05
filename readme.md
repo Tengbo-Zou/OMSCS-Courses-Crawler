@@ -5,7 +5,7 @@ This is a project to scrawl for OMSCS 2020 fall courses' remain seats and waitli
 
 ## 1, How To Run?
 1) download
-[jar file](https://github.com/Clifford-Tengbo-Zou/OMSCS-Courses-Scrawler/releases)
+[OMSCSCourses.jar](https://github.com/Clifford-Tengbo-Zou/OMSCS-Courses-Scrawler/releases)
 
 2) run as
 

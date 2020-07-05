@@ -1,66 +1,76 @@
-import java.io.*;
 import java.util.*;
 import org.jsoup.*;
 import org.jsoup.nodes.*;
+import org.jsoup.select.*;
 
 class Scraper{
-	private String url;
-	private String[] coursesInfo;
+	private List<Course> cl;
+	private String url = "https://oscar.gatech.edu/pls/bprod/bwckschd.p_disp_detail_sched";
 
-	Scraper(String url){
-		this.url = url;
-		getCoursesInfor();
+	Scraper(){
+		cl = AllCourses.getList();
+		cl.sort(new Comparator<Course>() {
+			@Override
+			public int compare(Course a, Course b) {
+				return a.code.compareTo(b.code);
+			}
+		});
 	}
 
 
-	private void getCoursesInfor(){
-
-
+	private String getCourseInfor(Course crs){
 		Map<String, String> datas = new HashMap<>();
-		datas.put("term_in", "202008");
-		datas.put("crn_in", "86583");
-
-
-		Map<String, String> headers = new HashMap<>();
-		headers.put("Connection", "Keep-Alive");
-		headers.put("Content-Language", "en");
-		headers.put("Content-Length", "8012");
-		headers.put("Content-Type", "text/html; charset=UTF-8");
-		headers.put("Date", "Sun, 05 Jul 2020 03:13:43 GMT");
-		headers.put("Keep-Alive", "timeout=900, max=4769");
-		headers.put("Server", "Oracle-Application-Server-11g");
-		headers.put("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
-		headers.put("Accept-Encoding", "gzip, deflate, br");
-		headers.put("Accept-Language", "en,en-US;q=0.9,zh;q=0.8,zh-HK;q=0.7,zh-CN;q=0.6,zh-TW;q=0.5");
-		headers.put("Cache-Control", "max-age=0");
-		headers.put("Connection", "keep-alive");
-		headers.put("Cookie", "_ga=GA1.2.1054380886.1588526545; _gid=GA1.2.811962096.1593830612; BIGipServer~EIS~bpss-web=279105410.24862.0000");
-		headers.put("Host", "oscar.gatech.edu");
-		headers.put("Referer", "https://oscar.gatech.edu/pls/bprod/bwckschd.p_get_crse_unsec");
-		headers.put("Sec-Fetch-Dest", "document");
-		headers.put("Sec-Fetch-Mode", "navigate");
-		headers.put("Sec-Fetch-Site", "none");
-		headers.put("Sec-Fetch-User", "?1");
-		headers.put("Upgrade-Insecure-Requests", "1");
-		headers.put("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36");
-
+		datas.put("term_in", crs.term_in);
+		datas.put("crn_in", crs.crn_in);
 
 		try{
 			Document doc = Jsoup.connect(url)
-			// .headers(headers)
 			.data(datas)
 			.get();
-			// .data(datas)
-			System.out.println(doc.html());
-			// .userAgent("Mozilla/5.0")
-			// .timeout(900)
+
+			Elements tables = doc.getElementsByClass("datadisplaytable");
+			Elements nums = tables.get(1).getElementsByClass("dddefault");
+			String remain = nums.get(2).html();
+			String waitList = nums.get(4).html();
+			if(crs.name.contains("Special Topics")){
+				Node label = doc.getElementsByClass("fieldlabeltext").get(0).nextSibling();
+				crs.name += " " + label;
+			}
+			return String.format("%-50s %-15s %-15s %-15s\n", crs.name, crs.code, remain, waitList);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "Error: " + crs;
 		}
+
 	}
 
 
-	// public String printout(){
+	public String searchInfo(){
+		StringBuilder dashLine = new StringBuilder();
+		for(int i = 0; i<95; i++){
+			dashLine.append('-');
+		}
+		dashLine.append("\n");
 
-	// }
+		StringBuilder retval = new StringBuilder();
+		retval.append(String.format("%-50s %-15s %-15s %-15s\n", "Course", "ID","RemainSeats", "Waitlist"));
+		retval.append(dashLine);
+		for (int i= 0; i<cl.size(); i++) {
+			if(i%5==0 && i>0) {
+				retval.append("\n");
+			}
+			retval.append(getCourseInfor(cl.get(i)));
+		}
+		return retval.toString();
+	}
+
 }
+
+
+
+
+
+
+
+
+

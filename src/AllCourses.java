@@ -32,7 +32,6 @@ public class AllCourses{
 		retval.add(new Course("Intro Analytics Modeling - 92902 - ISYE 6501 - O01", "202008", "92902"));
 		retval.add(new Course("Simulation - 92903 - ISYE 6644 - O01", "202008", "92903"));
 		retval.add(new Course("Info Security Policies - 90725 - PUBP 6725 - O01", "202008", "90725"));
-
 		retval.add(new Course("High Perform Computing - 92942 - CSE 6220 - O01", "202008", "92942"));
 		retval.add(new Course("Data & Visual Analytics - 87163 - CSE 6242 - O01", "202008", "87163"));
 		retval.add(new Course("Big Data Health - 87886 - CSE 6250 - O01", "202008", "87886"));

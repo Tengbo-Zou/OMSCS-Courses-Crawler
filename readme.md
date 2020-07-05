@@ -9,7 +9,7 @@ This is a project to scrawl for OMSCS 2020 fall courses' remain seats and waitli
 
 2) run as
 
-	java -jar OMSCSCourses.jar
+		java -jar OMSCSCourses.jar
 
 3) the result is stored in Output:
 
@@ -23,7 +23,7 @@ This is a project to scrawl for OMSCS 2020 fall courses' remain seats and waitli
 
 1) clone
 
-	git clone git@github.com:Clifford-Tengbo-Zou/OMSCS-Courses-Scrawler.git
+		git clone git@github.com:Clifford-Tengbo-Zou/OMSCS-Courses-Scrawler.git
 
 2) import
 
@@ -38,4 +38,4 @@ manually as dependence
 
 ## 3, Want contribute?
 
-plz send me a pull request :>
+send me a pull request :>

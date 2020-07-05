@@ -1,6 +1,6 @@
 public class Main{
 	public static void main(String[] args) {
-		Scraper s = new Scraper();
+		Scrawler s = new Scrawler();
 		System.out.println(s.searchInfo());
 
 	}

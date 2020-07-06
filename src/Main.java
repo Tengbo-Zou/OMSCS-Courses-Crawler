@@ -2,7 +2,7 @@ import java.io.*;
 
 public class Main{
 	public static void main(String[] args) {
-		Scrawler s = new Scrawler();
+		Crawler s = new Crawler();
 		String output = s.searchInfo();
 		System.out.println(output);
 		try{

@@ -3,11 +3,11 @@ import org.jsoup.*;
 import org.jsoup.nodes.*;
 import org.jsoup.select.*;
 
-class Scrawler{
+class Crawler{
 	private List<Course> cl;
 	private String url = "https://oscar.gatech.edu/pls/bprod/bwckschd.p_disp_detail_sched";
 
-	Scrawler(){
+	Crawler(){
 		cl = AllCourses.getList();
 		cl.sort(new Comparator<Course>() {
 			@Override

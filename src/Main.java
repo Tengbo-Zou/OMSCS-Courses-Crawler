@@ -1,4 +1,5 @@
 import java.io.*;
+import java.time.*;
 
 public class Main{
 	public static void main(String[] args) {
@@ -6,7 +7,11 @@ public class Main{
 		String output = s.searchInfo();
 		System.out.println(output);
 		try{
-			FileWriter writer = new FileWriter("Output");
+			File logs = new File("./OutputLogs");
+			if (!logs.exists() || !logs.isDirectory()) {
+				logs.mkdir();
+			}
+			FileWriter writer = new FileWriter(new File(logs.toString() , LocalDateTime.now() + ".log"));
 			writer.write(output);
 			writer.flush();
 			writer.close();

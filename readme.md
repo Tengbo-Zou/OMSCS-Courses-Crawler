@@ -5,7 +5,7 @@ This is a project to crawl for OMSCS **2020 Fall** courses' remain seats and wai
 
 ## 1, How To Run?
 1. download  
-[releases](https://github.com/Clifford-Tengbo-Zou/OMSCS-Courses-Crawler/releases/)
+from [release](https://github.com/Clifford-Tengbo-Zou/OMSCS-Courses-Crawler/releases/)
 
 2. run as  
 ```console
@@ -18,7 +18,7 @@ $ java -jar OMSCSCourses.jar
 </a>
 
 
-## 2, If you want build from the source code
+## 2, If you want build from source code
 
 
 1. clone  

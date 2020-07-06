@@ -1,11 +1,11 @@
 #	OMSCS Courses Remain Seats Search
 
-This is a project to scrawl for OMSCS 2020 fall courses' remain seats and waitlist
+This is a project to Crawl for OMSCS 2020 fall courses' remain seats and waitlist
 
 
 ## 1, How To Run?
 1) download
-[OMSCSCourses.jar](https://github.com/Clifford-Tengbo-Zou/OMSCS-Courses-Scrawler/releases)
+[OMSCSCourses.jar](https://github.com/Clifford-Tengbo-Zou/OMSCS-Courses-Crawler/releases)
 
 2) run as
 
@@ -23,7 +23,7 @@ This is a project to scrawl for OMSCS 2020 fall courses' remain seats and waitli
 
 1) clone
 
-		git clone git@github.com:Clifford-Tengbo-Zou/OMSCS-Courses-Scrawler.git
+		git clone git@github.com:Clifford-Tengbo-Zou/OMSCS-Courses-Crawler.git
 
 2) import
 

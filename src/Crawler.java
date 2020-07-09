@@ -27,7 +27,7 @@ class Crawler{
 			Document doc = Jsoup.connect(url)
 			.data(datas)
 			.get();
-
+			
 			Elements tables = doc.getElementsByClass("datadisplaytable");
 			Elements nums = tables.get(1).getElementsByClass("dddefault");
 			String remain = nums.get(2).html();
@@ -36,10 +36,13 @@ class Crawler{
 				Node label = doc.getElementsByClass("fieldlabeltext").get(0).nextSibling();
 				crs.name += " " + label;
 			}
-			return String.format("%-50s %-15s %-15s %-15s\n", crs.name, crs.code, remain, waitList);
+			String output =  String.format("%-50s %-15s %-15s %-15s\n", crs.name, crs.code, remain, waitList);
+			System.out.println(output);
+			Thread.sleep(1000);
+			return output;
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "Error: " + crs;
+			return "Error: " + e + "\n";
 		}
 
 	}

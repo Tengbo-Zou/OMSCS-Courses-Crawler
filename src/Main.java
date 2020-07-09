@@ -5,7 +5,6 @@ public class Main{
 	public static void main(String[] args) {
 		Crawler s = new Crawler();
 		String output = s.searchInfo();
-		System.out.println(output);
 		try{
 			File logs = new File("./OutputLogs");
 			if (!logs.exists() || !logs.isDirectory()) {
